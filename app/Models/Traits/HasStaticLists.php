@@ -7,7 +7,7 @@ trait HasStaticLists
     /**
      * @param string|null $columnKey
      * @param string|null $indexKey
-     * @param array| $records
+     * @param array|null $records
      * @return array
      */
     protected static function staticListBuild(
