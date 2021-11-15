@@ -32,7 +32,10 @@
         </table>
 
     </div>
-    <div class="container">
+    <div style="margin-top: 20px; display: flex; justify-content: center" class="container">
+        {{ $users->links() }}
+    </div>
+    <div class="container" style="margin-top: 40px">
         <h3 class="jumbotron-heading">Add new user</h3>
         <form action="{{ route('users.store') }}" method="POST">
             @csrf

@@ -13,10 +13,9 @@
                     <a class="nav-link {{request()->routeIs('users')  ? 'active' : ''}}" href="{{ route('users') }}">Users</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <span class="navbar-text">
+                Simple text
+            </span>
         </div>
     </div>
 </nav>

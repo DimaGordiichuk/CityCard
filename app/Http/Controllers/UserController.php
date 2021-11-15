@@ -11,7 +11,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::all();
+        $users = User::orderByDesc('created_at')
+            ->simplePaginate(10);
 
         return view('front.users.index', compact('users'));
     }

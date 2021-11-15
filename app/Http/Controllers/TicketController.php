@@ -14,7 +14,7 @@ class TicketController extends Controller
     public function index(Request $request)
     {
         $tickets = Ticket::orderByDesc('created_at')
-            ->paginate(10);
+            ->simplePaginate(10);
 
         $users = User::all();
         $transports = Transport::all();

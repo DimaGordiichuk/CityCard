@@ -4,7 +4,7 @@
 <main>
     <section class="jumbotron text-center mx-auto" style="width: 400px;">
         <div class="container">
-            <h1 class="jumbotron-heading">City Card</h1>
+            <h1 class="jumbotron-heading">Tickets</h1>
             <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
         </div>
     </section>
@@ -32,7 +32,12 @@
             </tbody>
         </table>
     </div>
-    <div class="container">
+    <div style="margin-top: 20px; display: flex; justify-content: center" class="container">
+        {{ $tickets->links() }}
+    </div>
+
+
+    <div class="container" style="margin-top: 40px">
         <h3 class="jumbotron-heading">Add new ticket</h3>
         <form action="{{ route('tickets.store') }}" method="POST">
             @csrf
