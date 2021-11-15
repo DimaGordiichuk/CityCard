@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
 {
-    use HasFactory,
-        HasStaticLists;
+    use HasFactory;
+    use HasStaticLists;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +18,17 @@ class Card extends Model
      */
     protected $guarded = ['id'];
 
+    /** @var string  */
     public const TYPE_TYPICAL = 'typical';
+
+    /** @var string  */
     public const TYPE_CONCESSION = 'concession';
 
+    /**
+     * Get user card.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -18,9 +18,9 @@
     @endphp
 
     @foreach ($flashKeys as $keyName)
-    @if (\Illuminate\Support\Facades\Session::has($keyName))
-    toastr.{{$keyName}}("{{ \Illuminate\Support\Facades\Session::get($keyName) }}");
-    @endif
+        @if (\Illuminate\Support\Facades\Session::has($keyName))
+            toastr.{{$keyName}}("{{ \Illuminate\Support\Facades\Session::get($keyName) }}");
+        @endif
     @endforeach
 
     @if ($errors->any())

@@ -9,5 +9,10 @@ class Transport extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
 }

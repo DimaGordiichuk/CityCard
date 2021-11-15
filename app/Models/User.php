@@ -42,8 +42,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
 
+
+    /**
+     * All user cards.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function cards()
     {
         return $this->hasMany(Card::class);

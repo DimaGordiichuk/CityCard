@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
+    /**
+     * Show all tickets.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $tickets = Ticket::orderByDesc('created_at')
@@ -22,6 +28,12 @@ class TicketController extends Controller
         return view('front.tickets.index', compact('tickets','users','transports'));
     }
 
+    /**
+     * Save new ticket.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(TicketStoreRequest $request)
     {
         $transport = Transport::findOrFail($request->transport_id);
@@ -38,6 +50,12 @@ class TicketController extends Controller
             ->with('success', trans('notifications.store.success'));
     }
 
+    /**
+     * Return cards for user.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function selectCard(Request $request){
 
         if($request->ajax()){
