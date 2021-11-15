@@ -25,7 +25,7 @@ class TicketController extends Controller
         $users = User::all();
         $transports = Transport::all();
 
-        return view('front.tickets.index', compact('tickets','users','transports'));
+        return view('front.tickets.index', compact('tickets', 'users', 'transports'));
     }
 
     /**
@@ -56,11 +56,12 @@ class TicketController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function selectCard(Request $request){
+    public function selectCard(Request $request)
+    {
+        if ($request->ajax()) {
+            $cards = Card::where('user_id', $request->user_id)->get();
+            $html = view('front.tickets.inc.selectcard', ['cards' => $cards])->render();
 
-        if($request->ajax()){
-            $cards = Card::where('user_id',$request->user_id)->get();
-            $html = view('front.tickets.inc.selectcard',['cards' => $cards])->render();
             return response()->json(['options'=>$html]);
         }
     }

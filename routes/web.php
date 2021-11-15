@@ -19,4 +19,3 @@ Route::post('/tickets/selectcard', [\App\Http\Controllers\TicketController::clas
 
 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::post('/users', [\App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-

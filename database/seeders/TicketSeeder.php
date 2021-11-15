@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Card;
-use App\Models\User;
 use App\Models\Transport;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class TicketSeeder extends Seeder

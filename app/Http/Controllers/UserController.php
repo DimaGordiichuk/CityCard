@@ -32,7 +32,7 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $user = User::create($request->only([
-                'email', 'name', 'password'
+                'email', 'name', 'password',
             ]) + ['email_verified_at' => now()]);
 
         Card::create([

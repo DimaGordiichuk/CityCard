@@ -9,16 +9,12 @@ trait HasStaticLists
         string $columnKey = null,
         string $indexKey = null
     ): array {
-
         if ($indexKey && $columnKey) {
             return array_column($records, $columnKey, $indexKey);
-        }
-
-        elseif ($columnKey) {
+        } elseif ($columnKey) {
             return array_column($records, $columnKey);
         }
 
         return $records;
     }
-
 }

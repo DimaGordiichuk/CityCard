@@ -18,10 +18,10 @@ class Card extends Model
      */
     protected $guarded = ['id'];
 
-    /** @var string  */
+    /** @var string */
     public const TYPE_TYPICAL = 'typical';
 
-    /** @var string  */
+    /** @var string */
     public const TYPE_CONCESSION = 'concession';
 
     /**
@@ -54,7 +54,6 @@ class Card extends Model
 
         return self::staticListBuild($records, $columnKey, $indexKey);
     }
-
 
     /**
      * @return string
