@@ -7,7 +7,10 @@ use App\Models\Card;
 use App\Models\Ticket;
 use App\Models\Transport;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class TicketController extends Controller
 {
@@ -17,7 +20,7 @@ class TicketController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $tickets = Ticket::orderByDesc('created_at')
             ->simplePaginate(10);
@@ -34,11 +37,11 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(TicketStoreRequest $request)
+    public function store(TicketStoreRequest $request): RedirectResponse
     {
         $transport = Transport::findOrFail($request->transport_id);
 
-        $ticket = Ticket::create([
+        Ticket::create([
             'price' => $transport->price,
             'user_id' => $request->user_id,
             'card_id' => $request->card_id,
@@ -56,7 +59,7 @@ class TicketController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function selectCard(Request $request)
+    public function selectCard(Request $request): JsonResponse
     {
         if ($request->ajax()) {
             $cards = Card::where('user_id', $request->user_id)->get();

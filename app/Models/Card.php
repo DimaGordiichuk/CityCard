@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Traits\HasStaticLists;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Card extends Model
 {
@@ -29,7 +30,7 @@ class Card extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function user() :BelongsTo
     {
         return $this->belongsTo(User::class);
     }

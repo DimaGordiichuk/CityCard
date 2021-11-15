@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Models\Card;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -13,9 +15,9 @@ class UserController extends Controller
      * Show all users.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $users = User::orderByDesc('created_at')
             ->simplePaginate(10);
@@ -29,7 +31,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserStoreRequest $request): RedirectResponse
     {
         $user = User::create($request->only([
                 'email', 'name', 'password',

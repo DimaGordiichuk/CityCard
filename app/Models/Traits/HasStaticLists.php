@@ -4,6 +4,12 @@ namespace App\Models\Traits;
 
 trait HasStaticLists
 {
+    /**
+     * @param string|null $columnKey
+     * @param string|null $indexKey
+     * @param array| $records
+     * @return array
+     */
     protected static function staticListBuild(
         array $records = [],
         string $columnKey = null,
