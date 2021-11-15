@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Ticket extends Model
+{
+    use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function card()
+    {
+        return $this->belongsTo(Card::class);
+    }
+
+    public function transport()
+    {
+        return $this->belongsTo(Transport::class);
+    }
+
+}
