@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+//use Google\Service\Sheets\ValueRange;
 
 class TicketController extends Controller
 {
@@ -22,6 +23,26 @@ class TicketController extends Controller
      */
     public function index(Request $request): View
     {
+         //motto
+//        $sheets = app('google')->make('sheets');
+//        $name = $sheets->spreadsheets_values->get(config('google.spreadsheet.id'),'M3:B147');
+//        $gaz = $sheets->spreadsheets_values->get(config('google.spreadsheet.id'),'B3:M147');
+//        $values = $sheets->spreadsheets_values->getValues();
+//        dd($name);
+
+
+//        upg
+        $client = new \Goutte\Client();
+        $crawler = $client->request('GET', 'https://upg.ua/merezha_azs/');
+
+        $html = $crawler->html();
+
+        $stringData = stristr(stristr(stristr($html, 'var objmap ='), 'var map', true), '{');
+        $stringData = html_entity_decode(trim($stringData));
+        $stringData = substr($stringData, 0, -1);
+
+        json_decode($stringData, true);
+
         $tickets = Ticket::orderByDesc('created_at')
             ->simplePaginate(10);
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\GoogleClient;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton('google', function ($app) {
+            return new GoogleClient($app['config']['google']);
+        });
     }
 }
