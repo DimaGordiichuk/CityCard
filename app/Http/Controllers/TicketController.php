@@ -23,6 +23,7 @@ class TicketController extends Controller
      */
     public function index(Request $request): View
     {
+
          //motto
 //        $sheets = app('google')->make('sheets');
 //        $name = $sheets->spreadsheets_values->get(config('google.spreadsheet.id'),'M3:B147');
